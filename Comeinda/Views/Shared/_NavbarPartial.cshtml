@@ -1,0 +1,11 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Comeinda.Data.Tables
+@inject SignInManager<CastomUser> SignInManager
+@inject UserManager<CastomUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="ControlPanel" asp-action="Index">Панель управления</a>
+    </li>
+}

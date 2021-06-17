@@ -1,0 +1,62 @@
+﻿@model Comeinda.Data.Tables.TicketSetsTable
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>TicketSetsTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoomCapacityType" class="control-label"></label>
+                <input asp-for="RoomCapacityType" class="form-control" />
+                <span asp-validation-for="RoomCapacityType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostOfStandingTickets" class="control-label"></label>
+                <input asp-for="CostOfStandingTickets" class="form-control" />
+                <span asp-validation-for="CostOfStandingTickets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostOfSeatingTickets" class="control-label"></label>
+                <input asp-for="CostOfSeatingTickets" class="form-control" />
+                <span asp-validation-for="CostOfSeatingTickets" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfStandingPlace" class="control-label"></label>
+                <input asp-for="NumberOfStandingPlace" class="form-control" />
+                <span asp-validation-for="NumberOfStandingPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rows" class="control-label"></label>
+                <input asp-for="Rows" class="form-control" />
+                <span asp-validation-for="Rows" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfPlacesInRow" class="control-label"></label>
+                <input asp-for="NumberOfPlacesInRow" class="form-control" />
+                <span asp-validation-for="NumberOfPlacesInRow" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventId" class="control-label"></label>
+                <select asp-for="EventId" class ="form-control" asp-items="ViewBag.EventId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
