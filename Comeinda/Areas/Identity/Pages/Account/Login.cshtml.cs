@@ -86,10 +86,14 @@ namespace Comeinda.Areas.Identity.Pages.Account
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
 
                 var result = await _signInManager.PasswordSignInAsync(Input.EmailOrPhone, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if(!result.Succeeded)
+                if (!result.Succeeded)
                 {
                     var userByPhone = await _userRepository.GetUserByPhone(Input.EmailOrPhone);
-                    result = await _signInManager.PasswordSignInAsync(userByPhone, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                    if (userByPhone != null)
+                    {
+                        result = await _signInManager.PasswordSignInAsync(userByPhone, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                    }
                 }
                 if (result.Succeeded)
                 {
