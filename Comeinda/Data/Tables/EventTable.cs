@@ -21,6 +21,7 @@ namespace Comeinda.Data.Tables
         public CategoryEventTable Category { get; set; }
         [Required]
         public string Genre { get; set; }
+        public Guid? PosterId { get; set; }
         public IEnumerable<FileTable> Files { get; set; }
         public string TitleSEO { get; set; }
         public string DescriptionSEO { get; set; }
