@@ -41,6 +41,7 @@ namespace Comeinda
             services.AddScoped<ITicketRepository, TicketRepository>();
             services.AddScoped<ITicketSetsRepository, TicketSetsRepository>();
             services.AddScoped<IEventRepository, EventRepositoty>();
+            services.AddScoped<IFileRepository, FileRepository>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
