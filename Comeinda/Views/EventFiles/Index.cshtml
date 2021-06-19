@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Comeinda.Models.Files.EventFilesViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameEvent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Files)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEvent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Files)
+            </td>
+            <td>
+                <a asp-action="Files" asp-route-EventId="@item.EventId">Файлы</a>|
+                <a asp-action="CreatePoster" asp-route-EventId="@item.EventId">Добавить афишу</a>|
+                <a asp-action="CreateFile" asp-route-EventId="@item.EventId">Добавить файл</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
