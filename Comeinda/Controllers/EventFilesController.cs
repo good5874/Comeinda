@@ -122,7 +122,7 @@ namespace Comeinda.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(nameof(Files), ev.Id);
+            return View(nameof(Files), fileRepository.GetWithInclude(x => x.EventId == ev.Id));
         }
 
         [HttpPost]
@@ -160,7 +160,7 @@ namespace Comeinda.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(nameof(Files), ev.Id);
+            return View(nameof(Files), fileRepository.GetWithInclude(x => x.EventId == ev.Id));
         }
 
         public async Task<IActionResult> Delete(Guid? id)
@@ -184,17 +184,17 @@ namespace Comeinda.Controllers
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var fileTable = await fileRepository.FindByIdAsync(id);
-            var ev = await eventRepository.FindByIdAsync(fileTable.EventId);
 
-            if (ev.PosterId == fileTable.EventId)
+            if (fileTable.Name == "Афиша")
             {
+                var ev = await eventRepository.FindByIdAsync(fileTable.EventId);
                 ev.PosterId = null;
+                await eventRepository.UpdateAsync(ev);
             }
 
             System.IO.File.Delete(fileTable.Path);
 
             await fileRepository.RemoveAsync(fileTable);
-            await eventRepository.UpdateAsync(ev);
             return RedirectToAction(nameof(Index));
         }
     }
