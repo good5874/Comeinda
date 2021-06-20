@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Barcode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Event)
+                @Html.DisplayNameFor(model => model.EventId)
             </th>
             <th></th>
         </tr>
@@ -64,7 +64,7 @@
                 @Html.DisplayFor(modelItem => item.Barcode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Event.Address)
+                @Html.DisplayFor(modelItem => item.EventId)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
